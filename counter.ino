@@ -4,9 +4,9 @@
 #include <ESP8266WiFi.h>
 #include <time.h>
 #include "CronAlarms.h"
-const char* ssid = "Janssen"; 
-const char* password = "wtawhY7xdjaa"; 
-const char* getHost = "192.168.178.100"; 
+const char* ssid = "ssid"; 
+const char* password = "password"; 
+const char* getHost = "ip adres"; 
 const int httpGetPort = 80;
 long pulsetime = 0;
 String getReceiverURL = "/received.php";
@@ -78,7 +78,8 @@ void postData() {
 		clientGet.print("Host: ");
 		clientGet.println(getHost);
 		clientGet.println("User-Agent: ESP8266/1.0");
-		clientGet.println("Authorization: Basic c21hcnRtZXRlcjprbm9lcGll=");
+		// uncommend the next line if your server has een .htaccess with .htpasswd see readme file
+//		clientGet.println("Authorization: Basic code=");
 		clientGet.println("Connection: close\r\n\r\n");
 		unsigned long timeoutP = millis();
 		while (clientGet.available() == 0) {
